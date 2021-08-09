@@ -1,0 +1,29 @@
+{
+  "name": "unicode-datamatrix",
+  "version": "0.0.1",
+  "description": "Generate unicode/ascii Datamatrix barcodes for use in console / terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docteurzoidberg/lib-unicode-datamatrix.git"
+  },
+  "keywords": [
+    "ascii",
+    "unicode",
+    "console",
+    "datamatrix",
+    "barcode"
+  ],
+  "author": "DrZoid",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/docteurzoidberg/lib-unicode-datamatrix/issues"
+  },
+  "homepage": "https://github.com/docteurzoidberg/lib-unicode-datamatrix#readme",
+  "dependencies": {
+    "tualo-datamatrix": "0.0.1"
+  }
+}
