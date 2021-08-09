@@ -1,6 +1,6 @@
 {
   "name": "unicode-datamatrix",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate unicode/ascii Datamatrix barcodes for use in console / terminal",
   "main": "index.js",
   "scripts": {
