@@ -42,8 +42,8 @@ module.exports = function(data, opts) {
   };
   opts = { ...defaults, ...(opts || {}) }
 
-  var dm = new Datamatrix();
-  var ascii = dm.getDigit(data,false).split('\n');
+  let dm = new Datamatrix();
+  let ascii = dm.getDigit(data,false).split('\n');
 
   //Removing borders (clean zone) around barcode?
   if(!opts.border) {
@@ -51,7 +51,7 @@ module.exports = function(data, opts) {
   }
 
   //Double pixel width to achieve squarish aspect ratio?
-  var todo = (opts.square) ?
+  let todo = (opts.square) ?
     ascii.map((line)=>{
       newline = "";
       for(var i=0;i<line.length;i++) {
@@ -63,11 +63,11 @@ module.exports = function(data, opts) {
   : ascii;
 
   //calculating input bitmap height and width
-  var height = todo.length;
-  var width = todo[0].length;
+  let height = todo.length;
+  let width = todo[0].length;
 
   //generating bitmap from tualo-datamatrix ascii bits
-  var bmp=[];
+  let bmp=[];
   for(var y1=0;y1<todo.length;y1++) {
     var line=todo[y1];
     for(var x1=0;x1<line.length;x1++) {
@@ -77,7 +77,7 @@ module.exports = function(data, opts) {
 
   //if not small then convert and return bitmap to full chars
   if(!opts.small) {
-    var fulltxt="";
+    let fulltxt="";
     for(var y=0;y<height;y++) {
       for(var x=0;x<width;x++) {
         var bit = bmp[x+(y*width)];
@@ -90,27 +90,27 @@ module.exports = function(data, opts) {
   }
 
   //downsizing with quarter chars
-  var smallbmp = [];
-  var smallindex=0;
-  for(var y=0;y<height;y+=2) {
-    for(var x=0;x<width;x+=2) {
-      var bits = [];
+  let smallbmp = [];
+  let smallindex=0;
+  for(let y=0;y<height;y+=2) {
+    for(let x=0;x<width;x+=2) {
+      let bits = [];
       bits.push(bmp[x+(y*width)]);
       bits.push(bmp[(x+1)+(y*width)]);
       bits.push(bmp[x+((y+1)*width)]);
       bits.push(bmp[(x+1)+((y+1)*width)]);
       //Get the corresponding unicode char
-      var outputChar = tabChars[bits.join("")];
+      let outputChar = tabChars[bits.join("")];
       smallbmp[smallindex]=outputChar;
       smallindex++;
     }
   }
 
   //converting resized bitmap and return unicode quarter chars
-  var smalltxt="";
-  for(var y=0;y<height/2;y++) {
-    for(var x=0;x<width/2;x++) {
-      var char = smallbmp[x+(y*(width/2))];
+  let smalltxt="";
+  for(let y=0;y<height/2;y++) {
+    for(let x=0;x<width/2;x++) {
+      let char = smallbmp[x+(y*(width/2))];
       smalltxt+=char;
     }
     smalltxt+='\n';
